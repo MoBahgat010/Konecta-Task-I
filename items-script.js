@@ -35,6 +35,7 @@ const foodItemTemplate = document.getElementById('food-item');
 const addButtonTemplate = document.getElementById('add-button-template');
 const plusMinusTemplate = document.getElementById('plus-minus-template');
 const imageTemplate = document.getElementById('image-template');
+const popUpCartTemplate = document.getElementById('popup-cart-items');
 
 function createFoodItem(id, category, name, price, image) {
     const clone = foodItemTemplate.content.cloneNode(true);
@@ -144,6 +145,7 @@ const confirmPopup = document.getElementById('confirm');
 
 function createCartItem(id, category, name, price, image) {
     const clone = cartItemTemplate.content.cloneNode(true);
+
     clone.querySelector('.cart-item-content p').textContent = name;
     clone.querySelector('.cart-item-content span.quantity').textContent = data[id].quantity;
     clone.querySelector('.cart-item-content span.per-item').textContent = `$${price.toFixed(2)}`;
