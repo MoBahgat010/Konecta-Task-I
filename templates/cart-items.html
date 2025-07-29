@@ -1,0 +1,46 @@
+<template id="cart-item-template">
+    <li class="cart-item first:pt-0 last:pb-0 py-5 flex justify-between items-center border-b-2 border-b-[#C2C0BE]">
+      <div class="cart-item-content">
+        <p class="name lg:text-[1rem] md:text-[0.8rem] text-[1rem]"></p>
+        <span class="quantity">1x</span>
+        <span class="per-item ml-3 text-gray-500">@$5.50</span>
+        <span class="tot-item ml-1 text-gray-500">$5.50</span>
+      </div>
+      <button class="border-gray-500 cursor-pointer border-2 w-[1.1rem] h-[1.1rem] text-gray-500 hover:text-black hover:border-black flex justify-center items-center rounded-full duration-300">x</button>
+    </li>
+</template>
+
+<template id="empty-cart-template">
+  <div class="image-container w-full pb-3 px-5 flex flex-col justify-center gap-5 items-center">
+    <img src="assets/images/illustration-empty-cart.svg" alt="">
+    <p class="text-[1.3rem] md:text-[0.7rem] lg:text-[1rem]">Your added items will appear here</p>
+  </div>
+</template>
+
+<template id="order-template">
+  <div class="order px-6 border-0 py-5">
+    <div class="order-price flex justify-between items-center">
+      <p class="md:text-[0.7rem] lg:text-[1rem]">Order Total</p>
+      <p class="checkout-price font-bold text-[1rem] sm:text-[1rem] md:text-[1.5rem] lg:text-[2rem]"></p>
+    </div>
+    <div class="bg-[#FCF8F5] flex justify-center items-center py-4 mt-4 gap-2 rounded-2xl">
+      <img src="assets/images/icon-carbon-neutral.svg" alt="">
+      <p class="mt-[3px]">This is <strong>carbon-neutral</strong> delivery</p>
+    </div>
+    <button class="bg-orange-600 text-white rounded-full w-full hover:bg-transparent hover:text-orange-600 duration-300 border-2 border-orange-600 cursor-pointer py-2 mt-6">Confirm Order</button>
+  </div>
+</template>
+
+<template id="popup-cart-items">
+  <li class="cart-item py-5 flex justify-between items-center border-b-2 border-b-[#C2C0BE]">
+    <div class="image-container w-[25%] object-cover">
+      <img class="rounded-lg" src="assets/images/image-brownie-thumbnail.jpg" alt="">
+    </div>
+    <div class="w-[75%] pl-3 text-[0.8rem] sm:text-[1rem] md:text-[0.9rem] lg:text-[1rem]">
+      <p class="font-semibold mb-2">Classic Tiramisu</p>
+      <span class="text-orange-600">1x</span>
+      <span class="text-gray-500">@$5.50</span>
+    </div>
+    <p class="font-bold text-black text-[1.4rem]">$5.50</p>
+  </li>
+</template>

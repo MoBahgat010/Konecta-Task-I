@@ -1,0 +1,35 @@
+<template id="food-item">
+  <div class="item">
+    <div class="image-container relative aspect-square">
+      <!-- here should be the component -->
+    </div>
+    <div class="content mt-10">
+      <p class="category text-gray-400">Waffle</p>
+      <p class="name text-black">Waffle with Berries</p>
+      <p class="price text-orange-600">$6.50</p>
+    </div>
+  </div>
+</template>
+
+<template id="image-template">
+    <img class="rounded-2xl h-full" src="assets/images/image-cake-desktop.jpg" alt="img">
+</template>
+
+<template id="add-button-template">
+    <button class="add-to-cart-button flex justify-evenly align-middle absolute top-[100%]
+       cursor-pointer translate-y-[-50%] border-[1px] border-gray-500 left-[50%] translate-x-[-50%] w-[45%] sm:w-[70%]
+      text-black font-bold py-3 px-4 rounded-full bg-white hover:text-orange-600 hover:border-orange-600 duration-300">
+        <img class="text-orange-300" src="./assets/images/icon-add-to-cart.svg"></img>
+        Add to Cart
+    </button>
+</template>
+
+<template id="plus-minus-template">
+    <div class="plus-minus-button flex justify-between items-center absolute top-[100%]
+        text-white translate-y-[-50%] border-[1px] bg-orange-600 border-none
+        left-[50%] translate-x-[-50%] w-[45%] sm:w-[70%] font-bold py-3 px-4 rounded-full">
+        <button class="minus rounded-full flex justify-center items-center border-2 w-[1.5rem] h-[1.5rem] border-white  bg-orange-600 hover:bg-white hover:text-orange-600 cursor-pointer duration-300">–</button>
+        <p>1</p>
+        <button class="plus rounded-full border-2 flex justify-center items-center w-[1.5rem] h-[1.5rem] border-white  bg-orange-600 hover:bg-white hover:text-orange-600 cursor-pointer duration-300">+</button>
+    </div>
+</template>

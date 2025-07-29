@@ -1,0 +1,29 @@
+<template id="checkout-price-template">
+    <div class="confirm flex justify-center md:items-center items-end absolute inset-0 bg-[#81807F4D] z-50">
+      <div class="confirm-layer w-full md:w-[50%] rounded-2xl bg-white p-5">
+        <img class="py-3" src="assets/images/icon-order-confirmed.svg" alt="">
+        <p class="font-extrabold text-[3rem]">Order Confirmed</p>
+        <p class="text-gray-400">We hope you enjoy your food</p>
+        <ul class="confirm-items mt-5 max-h-[50dvh] overflow-auto px-[2rem] bg-[#FCF8F5]">
+          <li class="cart-item py-5 flex justify-between items-center border-b-2 border-b-[#C2C0BE]">
+            <div class="image-container w-[25%] object-cover">
+              <img class="rounded-lg" src="assets/images/image-brownie-thumbnail.jpg" alt="">
+            </div>
+            <div class="w-[75%] pl-3 text-[0.8rem] sm:text-[1rem] md:text-[0.9rem] lg:text-[1rem]">
+              <p class="font-semibold mb-2">Classic Tiramisu</p>
+              <span class="text-orange-600">1x</span>
+              <span class="text-gray-500">@$5.50</span>
+            </div>
+            <p class="font-bold text-black text-[1.4rem]">$5.50</p>
+          </li>
+          <li>
+            <div class="order-price py-5 flex justify-between items-center">
+              <p class="text-gray-700">Order Total</p>
+              <p class="font-bold text-[2rem]">$46.50</p>
+            </div>
+          </li>
+        </ul>
+        <button class="bg-orange-600 text-white rounded-full w-full hover:bg-transparent hover:text-orange-600 duration-300 border-2 border-orange-600 cursor-pointer py-2 mt-6">Start New Order</button>
+      </div>
+    </div>
+</template>
