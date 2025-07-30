@@ -27,7 +27,7 @@ async function init() {
     return data;
 }
 
-const data = await init();
+let data = await init();
 let cartItems = [];
 
 const foodItems = document.getElementById('food-items');
@@ -58,10 +58,14 @@ function createFoodItem(id, category, name, price, image) {
     return clone;
 }
 
-function createImageElement(imageContainer, image) {
+function createImageElement(imageContainer, image, flag=false) {
     const imageClone = imageTemplate.content.cloneNode(true);
     const img = imageClone.querySelector("img");
     img.src = image;
+    if(flag) {
+        img.classList.add("border-2");
+        img.classList.add("border-[#C34117]");
+    }
     imageContainer.appendChild(imageClone);
 }
 
@@ -73,7 +77,7 @@ function createAddButton(imageContainer, image, id) {
     
     button.addEventListener("click", () => {
         imageContainer.innerHTML = "";
-        createImageElement(imageContainer, image);
+        createImageElement(imageContainer, image, true);
         createPlusMinus(imageContainer, id);
     });
 
@@ -140,17 +144,41 @@ const cartList = document.getElementById('cart-list');
 const cartHeader = document.getElementById("cart-header");
 const emptyCartTemplate = document.getElementById('empty-cart-template');
 const orderTemplate = document.getElementById('order-template');
+const popUpOrderTemplate = document.getElementById('popup-order-template');
 const cartItemTemplate = document.getElementById('cart-item-template');
 const confirmPopup = document.getElementById('confirm');
+const popUpCartItemTemplate = document.getElementById('popup-cart-item-template');
+const confirmPopuplist = confirmPopup.querySelector('ul');
+const checkoutButton = document.getElementById('checkout-button');
+
+checkoutButton.addEventListener('click', () => {
+    cartItems = [];
+    data = data.map(item => ({
+        ...item,
+        quantity: 0
+    }));
+    console.log("in button");
+    confirmPopup.classList.add("z-[-50]");
+    renderFoodItems();
+    renderCartItems();
+})
 
 function createCartItem(id, category, name, price, image) {
     const clone = cartItemTemplate.content.cloneNode(true);
+    const popUpItemClone = popUpCartItemTemplate.content.cloneNode(true);
 
     clone.querySelector('.cart-item-content p').textContent = name;
     clone.querySelector('.cart-item-content span.quantity').textContent = data[id].quantity;
-    clone.querySelector('.cart-item-content span.per-item').textContent = `$${price.toFixed(2)}`;
+    clone.querySelector('.cart-item-content span.per-item').textContent = `@$${price.toFixed(2)}`;
     clone.querySelector('.cart-item-content span.tot-item').textContent = `$${(price * data[id].quantity).toFixed(2)}`;
 
+    popUpItemClone.querySelector('.cart-item-content p.name').textContent = name;
+    popUpItemClone.querySelector('.cart-item-content span.quantity').textContent = data[id].quantity;
+    popUpItemClone.querySelector('.cart-item-content span.per-item').textContent = `@$${price.toFixed(2)}`;
+    popUpItemClone.querySelector('.tot-item').textContent = `$${(price * data[id].quantity).toFixed(2)}`;
+    
+    const popUpImageContainer = popUpItemClone.querySelector('.image-container');
+    createImageElement(popUpImageContainer, image)
     const removeButton = clone.querySelector('button');
 
     removeButton.addEventListener('click', () => {
@@ -160,11 +188,12 @@ function createCartItem(id, category, name, price, image) {
         renderFoodItems();
     });
 
-    return clone;
+    return [clone, popUpItemClone];
 }
 
 function renderCartItems() {
     cartList.innerHTML = '';
+    confirmPopuplist.innerHTML = '';
     let total_price = 0; let cart_items_count = 0;
     data.forEach(item => { total_price += item.quantity * item.price; cart_items_count += item.quantity; });
     if (cartItems.length === 0) {
@@ -182,17 +211,22 @@ function renderCartItems() {
                     item.category,
                     item.name,
                     item.price,
-                    item.image.desktop
+                    item.image.thumbnail
                 );
-                cartList.appendChild(cartItem);
+                cartList.appendChild(cartItem[0]);
+                confirmPopuplist.appendChild(cartItem[1]);
             }
         });
         const orderClone = orderTemplate.content.cloneNode(true);
+        const popUpOrderClone = popUpOrderTemplate.content.cloneNode(true);
+        const popUpTotalPrice = popUpOrderClone.querySelector(".total-price");
         const confirmOrderButton = orderClone.querySelector("button");
         confirmOrderButton.addEventListener('click', () => { confirmPopup.classList.remove("z-[-50]") });
         const totalCheckoutPrice = orderClone.querySelector(".order-price p.checkout-price");
         totalCheckoutPrice.textContent = `$${total_price.toFixed(2)}`;
+        popUpTotalPrice.textContent = `$${total_price.toFixed(2)}`;
         cartList.appendChild(orderClone);
+        confirmPopuplist.appendChild(popUpOrderClone);
     }
     cartHeader.textContent = `Your Cart (${cart_items_count})`;
 }

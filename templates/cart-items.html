@@ -3,10 +3,12 @@
       <div class="cart-item-content">
         <p class="name lg:text-[1rem] md:text-[0.8rem] text-[1rem]"></p>
         <span class="quantity">1x</span>
-        <span class="per-item ml-3 text-gray-500">@$5.50</span>
-        <span class="tot-item ml-1 text-gray-500">$5.50</span>
+        <span class="per-item ml-3 text-gray-500"></span>
+        <span class="tot-item ml-1 text-gray-500"></span>
       </div>
-      <button class="border-gray-500 cursor-pointer border-2 w-[1.1rem] h-[1.1rem] text-gray-500 hover:text-black hover:border-black flex justify-center items-center rounded-full duration-300">x</button>
+      <button class="border-[#CAAFA7] cursor-pointer border-2 w-[1.1rem] h-[1.1rem] hover:text-black hover:border-black flex justify-center items-center rounded-full duration-300">
+        <img src="../assets/images/icon-remove-item.svg" alt="">
+      </button>
     </li>
 </template>
 
@@ -18,29 +20,36 @@
 </template>
 
 <template id="order-template">
-  <div class="order px-6 border-0 py-5">
+  <div class="order md:px-4 lg:px-6 border-0 py-5">
     <div class="order-price flex justify-between items-center">
       <p class="md:text-[0.7rem] lg:text-[1rem]">Order Total</p>
       <p class="checkout-price font-bold text-[1rem] sm:text-[1rem] md:text-[1.5rem] lg:text-[2rem]"></p>
     </div>
     <div class="bg-[#FCF8F5] flex justify-center items-center py-4 mt-4 gap-2 rounded-2xl">
       <img src="assets/images/icon-carbon-neutral.svg" alt="">
-      <p class="mt-[3px]">This is <strong>carbon-neutral</strong> delivery</p>
+      <p class="mt-[3px] md:text-[0.8rem]">This is <strong>carbon-neutral</strong> delivery</p>
     </div>
-    <button class="bg-orange-600 text-white rounded-full w-full hover:bg-transparent hover:text-orange-600 duration-300 border-2 border-orange-600 cursor-pointer py-2 mt-6">Confirm Order</button>
+    <button class="bg-[#C34117] text-white rounded-full w-full hover:bg-transparent hover:text-[#C34117] duration-300 border-2 border-[#C34117] cursor-pointer py-2 mt-6">Confirm Order</button>
   </div>
 </template>
 
-<template id="popup-cart-items">
+<template id="popup-order-template">
+  <li>
+    <div class="order-price py-5 flex justify-between items-center">
+        <p class="text-gray-700">Order Total</p>
+        <p class="total-price font-bold text-[2rem]"></p>
+    </div>
+  </li>
+</template>
+
+<template id="popup-cart-item-template">
   <li class="cart-item py-5 flex justify-between items-center border-b-2 border-b-[#C2C0BE]">
-    <div class="image-container w-[25%] object-cover">
-      <img class="rounded-lg" src="assets/images/image-brownie-thumbnail.jpg" alt="">
-    </div>
-    <div class="w-[75%] pl-3 text-[0.8rem] sm:text-[1rem] md:text-[0.9rem] lg:text-[1rem]">
+    <div class="image-container w-[25%] object-cover"></div>
+    <div class="cart-item-content w-[75%] pl-3 text-[0.8rem] sm:text-[1rem] md:text-[0.9rem] lg:text-[1rem]">
       <p class="name font-semibold mb-2">Classic Tiramisu</p>
-      <span class="quantity text-orange-600">1x</span>
-      <span class="per-item text-gray-500">@$5.50</span>
+      <span class="quantity text-[#C34117]"></span>
+      <span class="per-item text-gray-500"></span>
     </div>
-    <p class="font-bold tot-item text-black text-[1.4rem]">$5.50</p>
+    <p class="tot-item font-bold tot-item text-black text-[1.4rem]"></p>
   </li>
 </template>
